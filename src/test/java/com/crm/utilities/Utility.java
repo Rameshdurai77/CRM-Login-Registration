@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -194,6 +196,14 @@ public String getText(WebElement ele) {
 	else {
 		return null;
 	}
+}
+public List<String> stringSplit(String splitString,String splitCharacter){
+	List<String> list = new ArrayList<String>();
+	String[] split = splitString.split(splitCharacter);
+	for(String sp : split) {
+		list.add(sp);
+	}
+	return list;
 }
 
 }

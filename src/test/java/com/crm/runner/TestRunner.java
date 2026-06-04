@@ -11,6 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 		glue = {"com.crm.stepdefinition", "com.crm.hooks"},
 		dryRun =  false,
 		monochrome =  true,
+		tags = "@CRM_Registration",
 		plugin = {"html:target/index.html", "json:target/report.json"}
 		)
 public class TestRunner {

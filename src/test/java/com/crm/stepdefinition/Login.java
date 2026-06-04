@@ -1,5 +1,7 @@
 package com.crm.stepdefinition;
 
+import java.util.List;
+
 import com.crm.objectRepository.RegistrationFormPOM;
 import com.crm.utilities.Utility;
 
@@ -41,4 +43,25 @@ public class Login {
 		util.verifyCurrentUrl("dashboardPage");
 	}
 
+	@Then("User should see error message when invalid email and password entered {string}")
+	public void user_should_see_error_message_when_invalid_email_and_password_entered(String errorMessage) {
+	   rform.verifyErrorMessage(errorMessage);
+	}
+
+	@Then("User should see error message when valid email and empty password entered {string}")
+	public void user_should_see_error_message_when_valid_email_and_empty_password_entered(String errorMessage) {
+		rform.verifyPasswordErrorMessage(errorMessage);
+	}
+	
+	@Then("User should see error message when empty email and Valid password entered {string}")
+	public void user_should_see_error_message_when_empty_email_and_valid_password_entered(String errorMessage) {
+	    rform.verifyEmailErrorMessage(errorMessage);
+	}
+	
+	@Then("User should see error message when no email and password entered {string}")
+	public void user_should_see_error_message_when_no_email_and_password_entered(String errorMessage) {
+		List<String> errorMessages = util.stringSplit(errorMessage, ",");
+		rform.verifyEmailErrorMessage(errorMessages.get(0));	    
+		rform.verifyPasswordErrorMessage(errorMessages.get(errorMessages.size()-1));
+	}
 }
